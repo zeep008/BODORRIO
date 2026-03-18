@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judit & Josep</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#e8d8c3}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Montserrat',sans-serif;color:white}
+
+section{
+  height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed; /* efecte més elegant */
+}
+
+/* DIFUMINAT ENTRE SECCIONS */
+section::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:120px;
+  background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+  pointer-events:none;
+}
+
+.overlay{
+  background:rgba(0,0,0,0.45);
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px
+}
+
+h1{font-family:'Playfair Display';font-size:60px;margin:0}
+h2{font-family:'Playfair Display';font-size:36px}
+p{max-width:700px}
+
+.arrow{
+  position:absolute;
+  bottom:20px;
+  font-size:28px;
+  cursor:pointer;
+  opacity:0.8;
+  animation:float 2s infinite
+}
+
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(10px)}
+  100%{transform:translateY(0)}
+}
+
+.small{position:absolute;bottom:20px;font-size:14px}
+.left{left:20px}
+.right{right:20px}
+
+.countdown{font-size:22px;margin-top:20px;letter-spacing:2px}
+
+button{padding:10px 20px;border:none;background:var(--accent);cursor:pointer}
+
+form{display:flex;flex-direction:column;gap:10px;width:300px}
+input,textarea{padding:10px;border:none}
+
+.gallery{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.gallery img{width:120px;height:120px;object-fit:cover;border-radius:10px;transition:transform 0.4s}
+.gallery img:hover{transform:scale(1.1)}
+
+.vinyl{
+  position:absolute;
+  top:20px;
+  right:20px;
+  width:60px;height:60px;
+  border-radius:50%;
+  background:black;
+  border:5px solid gray;
+  cursor:pointer;
+  animation:spin 5s linear infinite paused
+}
+
+.vinyl.playing{animation-play-state:running}
+
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+
+/* 📱 OPTIMITZACIÓ MÒBIL COMPLETA */
+@media (max-width: 768px) {
+  section {
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 15px;
+    padding: 0 10px;
+  }
+
+  .small {
+    font-size: 12px;
+  }
+
+  .arrow {
+    font-size: 24px;
+    bottom: 15px;
+  }
+
+  .gallery {
+    gap: 6px;
+  }
+
+  .gallery img {
+    width: 70px;
+    height: 70px;
+  }
+
+  form {
+    width: 90%;
+  }
+
+  input, textarea {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .vinyl {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<audio id="music" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<section style="background-image:url('foto1.jpg')"><div class="overlay"><div id="vinyl" class="vinyl" onclick="toggleMusic()"></div><h1>Judit & Josep</h1><div class="small left">24/10/2026</div><div class="small right">Can Marlet</div><div class="arrow" onclick="scrollToSection(1)">↓</div></div></section>
+
+<section style="background-image:url('foto2.jpg')"><div class="overlay"><p>Amb 10 anys junts, hem viscut moltes aventures...</p><div class="gallery"><img src="foto2.jpg"><img src="foto3.jpg"><img src="foto4.jpg"><img src="foto5.jpg"><img src="foto6.jpg"></div><p>... però cap aventura ens ha fet tant feliços com passar aquest dia amb tu!</p><div class="arrow" onclick="scrollToSection(2)">↓</div></div></section>
+
+<section style="background-image:url('foto3.jpg')"><div class="overlay"><h2>Guarda la data</h2><p>24/10/2026 - 16:20</p><div class="countdown" id="countdown"></div><button onclick="addToCalendar()">Afegir al calendari</button><div class="arrow" onclick="scrollToSection(3)">↓</div></div></section>
+
+<section style="background-image:url('foto4.jpg')"><div class="overlay"><h2>Detalls del casament</h2><p>16:20 - Cerimònia</p><p>18:00 - Aperitiu</p><p>21:00 - Sopar</p><p>23:30 - Festa</p><div class="arrow" onclick="scrollToSection(4)">↓</div></div></section>
+
+<section style="background-image:url('foto5.jpg')"><div class="overlay"><h2>Normes</h2><ul><li>Gaudir molt</li><li>Somriure sempre</li><li>Respectar horaris</li></ul><div class="arrow" onclick="scrollToSection(5)">↓</div></div></section>
+
+<section style="background-image:url('foto6.jpg')"><div class="overlay"><h2>Confirmació</h2><p>Data límit: 03/10/2026</p><form><input placeholder="Nom" required><input placeholder="Assistiràs?"><textarea placeholder="Al·lèrgies"></textarea><button>Enviar</button></form><div class="arrow" onclick="scrollToSection(6)">↓</div></div></section>
+
+<section style="background-image:url('foto7.jpg')"><div class="overlay"><h2>La teva cançó</h2><form><input placeholder="Escriu una cançó" required><button>Enviar</button></form><p>Properament app per fotos</p><div class="arrow" onclick="scrollToSection(7)">↓</div></div></section>
+
+<section style="background-image:url('foto8.jpg')"><div class="overlay"><h2>❤️</h2></div></section>
+
+<script>
+function scrollToSection(i){document.querySelectorAll('section')[i].scrollIntoView({behavior:'smooth'})}
+
+function toggleMusic(){const m=document.getElementById('music');const v=document.getElementById('vinyl');if(m.paused){m.play();v.classList.add('playing')}else{m.pause();v.classList.remove('playing')}}
+
+const c=document.getElementById('countdown');
+const d=new Date('Oct 24, 2026 16:20:00').getTime();
+setInterval(()=>{
+const now=new Date().getTime();
+const dist=d-now;
+const days=Math.floor(dist/(1000*60*60*24));
+const h=Math.floor((dist/(1000*60*60))%24);
+const m=Math.floor((dist/1000/60)%60);
+const s=Math.floor((dist/1000)%60);
+c.innerHTML=`${days} dies ${h}h ${m}m ${s}s`},1000);
+
+function addToCalendar(){window.open('https://www.google.com/calendar/render?action=TEMPLATE&text=Casament Judit i Josep&dates=20261024T162000/20261024T230000')}
+</script>
+
+</body>
+</html>
