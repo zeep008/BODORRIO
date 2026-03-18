@@ -224,7 +224,7 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
 /* ─── RESPONSIVE MÒBIL ─── */
-@media (max-width:768px){
+@media (max-width:1024px){
   section{
     background-attachment:scroll;
     background-position:center center;
@@ -253,7 +253,6 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
 }
 
 @media (min-width:769px) and (max-width:1024px){
-  section{background-attachment:scroll}
   h1{font-size:72px}
 }
 </style>
@@ -403,6 +402,25 @@ setInterval(()=>{
   const s = Math.floor((dist/1000)%60);
   c.innerHTML = `${days} dies &nbsp; ${h}h ${m}m ${s}s`;
 }, 1000);
+
+// Parallax mòbil: simula background-attachment:fixed
+function isMobile(){return window.innerWidth <= 1024}
+
+function updateParallax(){
+  if(!isMobile()) return;
+  const sections = document.querySelectorAll('section');
+  const scrollY = window.scrollY;
+  sections.forEach(s => {
+    const rect = s.getBoundingClientRect();
+    const sectionTop = scrollY + rect.top;
+    const offset = (scrollY - sectionTop) * 0.35;
+    s.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+  });
+}
+
+window.addEventListener('scroll', updateParallax, {passive:true});
+window.addEventListener('resize', updateParallax);
+updateParallax();
 
 function addToCalendar(){
   window.open('https://www.google.com/calendar/render?action=TEMPLATE&text=Casament+Judit+i+Josep&dates=20261024T162000/20261024T230000');
