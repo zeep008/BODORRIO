@@ -180,6 +180,40 @@ section.beige-section .arrow{
   .mosaic-tall{height:200px !important}
   .mosaic-short{height:160px !important}
 }
+
+/* Caixes comptador */
+.cbox{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:12px;
+  padding:14px 10px 10px;
+  min-width:64px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+.cnum{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  font-weight:700;
+  line-height:1;
+  color:white;
+}
+.clbl{
+  font-family:'Montserrat',sans-serif;
+  font-size:9px;
+  font-weight:400;
+  letter-spacing:2px;
+  color:rgba(255,255,255,0.75);
+}
+@media(max-width:768px){
+  .cbox{min-width:52px;padding:10px 6px 8px}
+  .cnum{font-size:26px}
+  .clbl{font-size:8px}
+}
 .vinyl-wrapper{
   position:absolute;
   top:20px;
@@ -359,10 +393,88 @@ section.beige-section .arrow{
 <!-- SECCIÓ 3: Compta enrere -->
 <section style="background-image:url('foto2.jpg')">
   <div class="overlay">
-    <h2>Guarda la data</h2>
-    <p>24/10/2026 · 16:20</p>
-    <div class="countdown" id="countdown"></div>
-    <button onclick="addToCalendar()">Afegir al calendari</button>
+    <div class="invite-text">No t'ho perdis</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(42px,8vw,64px);font-weight:700;line-height:1.1;margin:0 0 20px;text-align:center;">Guarda la<br>Data!</h2>
+
+    <!-- Data amb línies decoratives -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;opacity:0.9;">
+      <div style="height:1px;width:40px;background:var(--accent);"></div>
+      <span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:13px;letter-spacing:2px;">24/10/2026 · 16:20</span>
+      <div style="height:1px;width:40px;background:var(--accent);"></div>
+    </div>
+
+    <!-- Caixes comptador -->
+    <div style="display:flex;gap:10px;margin-bottom:32px;" id="countdown-boxes">
+      <div class="cbox"><span class="cnum" id="cd-dies">--</span><span class="clbl">DIES</span></div>
+      <div class="cbox"><span class="cnum" id="cd-hores">--</span><span class="clbl">HORES</span></div>
+      <div class="cbox"><span class="cnum" id="cd-minuts">--</span><span class="clbl">MINUTS</span></div>
+      <div class="cbox"><span class="cnum" id="cd-segons">--</span><span class="clbl">SEGONS</span></div>
+    </div>
+
+    <!-- Botó calendari -->
+    <div onclick="openCalendarMenu()" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div style="
+        background:white;
+        border-radius:10px;
+        width:44px;height:44px;
+        display:flex;align-items:center;justify-content:center;
+        box-shadow:0 2px 8px rgba(0,0,0,0.3);
+        overflow:hidden;
+      ">
+        <div style="width:100%;text-align:center;">
+          <div style="background:#e74c3c;color:white;font-size:8px;font-weight:600;letter-spacing:1px;padding:2px 0;">
+            OCT
+          </div>
+          <div style="color:#333;font-size:18px;font-weight:700;line-height:1.4;">17</div>
+        </div>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:14px;letter-spacing:1px;">Afegeix al calendari</span>
+      <span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:11px;opacity:0.7;letter-spacing:1px;">Compatible amb iOS i Android</span>
+    </div>
+
+    <!-- Modal selecció calendari -->
+    <div id="cal-modal" style="
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.6);
+      z-index:100;
+      align-items:flex-end;
+      justify-content:center;
+    " onclick="closeCalendarMenu(event)">
+      <div style="
+        background:white;
+        border-radius:20px 20px 0 0;
+        width:100%;
+        max-width:500px;
+        padding:24px 20px 40px;
+        color:#333;
+      ">
+        <div style="width:40px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 20px;"></div>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14px;text-align:center;margin:0 0 20px;color:#666;">Afegir al calendari</p>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          <button onclick="addToGoogle()" style="
+            border:none;border-bottom:1px solid #f0f0f0;background:white;
+            padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
+            color:#333;cursor:pointer;text-align:left;letter-spacing:0;
+            display:flex;align-items:center;gap:12px;
+          ">📅 Google Calendar</button>
+          <button onclick="addToApple()" style="
+            border:none;border-bottom:1px solid #f0f0f0;background:white;
+            padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
+            color:#333;cursor:pointer;text-align:left;letter-spacing:0;
+            display:flex;align-items:center;gap:12px;
+          ">🍎 Apple Calendar (iOS/Mac)</button>
+          <button onclick="addToOutlook()" style="
+            border:none;background:white;
+            padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
+            color:#333;cursor:pointer;text-align:left;letter-spacing:0;
+            display:flex;align-items:center;gap:12px;
+          ">📧 Outlook / altres</button>
+        </div>
+      </div>
+    </div>
+
     <div class="arrow" onclick="scrollToSection(3)">↓</div>
   </div>
 </section>
@@ -444,40 +556,70 @@ function toggleMusic(){
   }
 }
 
-const c = document.getElementById('countdown');
-const d = new Date('Oct 24, 2026 16:20:00').getTime();
-setInterval(()=>{
+// Compte enrere amb caixes individuals
+const wedding = new Date('Oct 24, 2026 16:20:00').getTime();
+function updateCountdown(){
   const now = new Date().getTime();
-  const dist = d - now;
-  const days = Math.floor(dist/(1000*60*60*24));
-  const h = Math.floor((dist/(1000*60*60))%24);
-  const m = Math.floor((dist/1000/60)%60);
-  const s = Math.floor((dist/1000)%60);
-  c.innerHTML = `${days} dies &nbsp; ${h}h ${m}m ${s}s`;
-}, 1000);
+  const dist = wedding - now;
+  if(dist < 0){ document.getElementById('cd-dies').textContent='0'; return; }
+  document.getElementById('cd-dies').textContent   = Math.floor(dist/(1000*60*60*24));
+  document.getElementById('cd-hores').textContent  = Math.floor((dist/(1000*60*60))%24);
+  document.getElementById('cd-minuts').textContent = Math.floor((dist/1000/60)%60);
+  document.getElementById('cd-segons').textContent = Math.floor((dist/1000)%60);
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
-// Parallax mòbil: simula background-attachment:fixed
-function isMobile(){return window.innerWidth <= 1024}
+// Calendari
+function openCalendarMenu(){
+  document.getElementById('cal-modal').style.display='flex';
+}
+function closeCalendarMenu(e){
+  if(e.target===document.getElementById('cal-modal'))
+    document.getElementById('cal-modal').style.display='none';
+}
+function addToGoogle(){
+  window.open('https://www.google.com/calendar/render?action=TEMPLATE&text=Casament+Judit+i+Josep&dates=20261024T162000/20261024T235900&details=Us+esperem!&location=Can+Marlet');
+  document.getElementById('cal-modal').style.display='none';
+}
+function addToApple(){
+  const ics=[
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Judit&Josep//Wedding//CA',
+    'BEGIN:VEVENT',
+    'DTSTART:20261024T162000','DTEND:20261024T235900',
+    'SUMMARY:Casament Judit i Josep',
+    'DESCRIPTION:Us esperem!','LOCATION:Can Marlet',
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\r\n');
+  const blob=new Blob([ics],{type:'text/calendar'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='casament-judit-josep.ics'; a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById('cal-modal').style.display='none';
+}
+function addToOutlook(){
+  window.open('https://outlook.live.com/calendar/0/deeplink/compose?subject=Casament+Judit+i+Josep&startdt=2026-10-24T16:20:00&enddt=2026-10-24T23:59:00&body=Us+esperem!&location=Can+Marlet');
+  document.getElementById('cal-modal').style.display='none';
+}
+function addToCalendar(){ openCalendarMenu(); }
 
+// Parallax mòbil
+function isMobile(){return window.innerWidth<=1024}
 function updateParallax(){
   if(!isMobile()) return;
-  const sections = document.querySelectorAll('section');
-  const scrollY = window.scrollY;
-  sections.forEach(s => {
-    const rect = s.getBoundingClientRect();
-    const sectionTop = scrollY + rect.top;
-    const offset = (scrollY - sectionTop) * 0.35;
-    s.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+  const sections=document.querySelectorAll('section');
+  const scrollY=window.scrollY;
+  sections.forEach(s=>{
+    const rect=s.getBoundingClientRect();
+    const sectionTop=scrollY+rect.top;
+    const offset=(scrollY-sectionTop)*0.35;
+    s.style.backgroundPosition=`center calc(50% + ${offset}px)`;
   });
 }
-
-window.addEventListener('scroll', updateParallax, {passive:true});
-window.addEventListener('resize', updateParallax);
+window.addEventListener('scroll',updateParallax,{passive:true});
+window.addEventListener('resize',updateParallax);
 updateParallax();
-
-function addToCalendar(){
-  window.open('https://www.google.com/calendar/render?action=TEMPLATE&text=Casament+Judit+i+Josep&dates=20261024T162000/20261024T230000');
-}
 </script>
 
 </body>
