@@ -2,9 +2,9 @@
 <html lang="ca">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Judit & Josep</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
 :root{--accent:#e8d8c3}
 *{box-sizing:border-box}
@@ -12,7 +12,7 @@ html{scroll-behavior:smooth}
 body{margin:0;font-family:'Montserrat',sans-serif;color:white}
 
 section{
-  height:100vh;
+  min-height:100vh;
   position:relative;
   display:flex;
   align-items:center;
@@ -20,10 +20,10 @@ section{
   text-align:center;
   background-size:cover;
   background-position:center;
-  background-attachment:fixed; /* efecte més elegant */
+  background-attachment:fixed;
 }
 
-/* DIFUMINAT ENTRE SECCIONS */
+/* Difuminat entre seccions */
 section::after{
   content:"";
   position:absolute;
@@ -33,6 +33,7 @@ section::after{
   height:120px;
   background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
   pointer-events:none;
+  z-index:1;
 }
 
 .overlay{
@@ -44,161 +45,410 @@ section::after{
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  padding:20px
+  padding:20px;
+  z-index:2;
 }
 
-h1{font-family:'Playfair Display';font-size:60px;margin:0}
-h2{font-family:'Playfair Display';font-size:36px}
+h1{
+  font-family:'Parisienne',cursive;
+  font-size:90px;
+  margin:0;
+  line-height:1.1;
+  letter-spacing:2px;
+}
+
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+}
+
 p{max-width:700px}
 
+.title-divider{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:18px;
+  width:260px;
+}
+
+.divider-line{
+  flex:1;
+  height:1px;
+  background:var(--accent);
+  opacity:0.7;
+}
+
+.divider-symbol{
+  color:var(--accent);
+  font-size:12px;
+  opacity:0.9;
+  line-height:1;
+}
+
+/* Text "Us convidem al nostre casament" */
+.invite-text{
+  font-family:'Montserrat',sans-serif;
+  font-weight:200;
+  font-size:16px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:16px;
+  opacity:0.95;
+}
+
+/* Data i lloc (baix esquerra/dreta) */
+.small{
+  position:absolute;
+  bottom:28px;
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:white;
+  opacity:0.9;
+  z-index:3;
+}
+.left{left:24px}
+.right{right:24px}
+
+/* Fletxa de navegació */
 .arrow{
   position:absolute;
-  bottom:20px;
-  font-size:28px;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:26px;
   cursor:pointer;
-  opacity:0.8;
-  animation:float 2s infinite
+  opacity:0.75;
+  animation:float 2s infinite;
+  z-index:3;
 }
 
 @keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(10px)}
-  100%{transform:translateY(0)}
+  0%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(10px)}
+  100%{transform:translateX(-50%) translateY(0)}
 }
 
-.small{position:absolute;bottom:20px;font-size:14px}
-.left{left:20px}
-.right{right:20px}
+.countdown{font-size:20px;margin-top:20px;letter-spacing:2px;font-weight:300}
 
-.countdown{font-size:22px;margin-top:20px;letter-spacing:2px}
-
-button{padding:10px 20px;border:none;background:var(--accent);cursor:pointer}
+button{
+  padding:10px 24px;
+  border:1px solid var(--accent);
+  background:transparent;
+  color:white;
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:background 0.3s;
+  margin-top:10px;
+}
+button:hover{background:rgba(232,216,195,0.2)}
 
 form{display:flex;flex-direction:column;gap:10px;width:300px}
-input,textarea{padding:10px;border:none}
+input,textarea{
+  padding:10px;
+  border:none;
+  border-bottom:1px solid var(--accent);
+  background:transparent;
+  color:white;
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  outline:none;
+}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight:300}
 
 .gallery{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .gallery img{width:120px;height:120px;object-fit:cover;border-radius:10px;transition:transform 0.4s}
 .gallery img:hover{transform:scale(1.1)}
 
-.vinyl{
+/* ─── VINIL ─── */
+.vinyl-wrapper{
   position:absolute;
   top:20px;
   right:20px;
-  width:60px;height:60px;
-  border-radius:50%;
-  background:black;
-  border:5px solid gray;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
   cursor:pointer;
-  animation:spin 5s linear infinite paused
+  z-index:10;
+}
+
+.vinyl-hint{
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  font-size:11px;
+  letter-spacing:1px;
+  color:white;
+  opacity:0.85;
+  text-align:center;
+  max-width:90px;
+  line-height:1.4;
+}
+
+/* Fletxa ovalada apuntant cap al vinil */
+.vinyl-arrow{
+  font-size:18px;
+  opacity:0.8;
+  line-height:1;
+  /* La fletxa apunta cap amunt cap al vinil */
+  animation:floatUp 2s infinite;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+  100%{transform:translateY(0)}
+}
+
+.vinyl{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, #222 18%, transparent 18%),
+    repeating-radial-gradient(circle at 50% 50%, #1a1a1a 0px, #111 2px, #2a2a2a 4px, #111 6px);
+  border:4px solid #555;
+  box-shadow:0 0 0 2px #333, 0 4px 15px rgba(0,0,0,0.6);
+  position:relative;
+  animation:spin 5s linear infinite paused;
+}
+
+/* Punt central del vinil */
+.vinyl::after{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:14px;height:14px;
+  border-radius:50%;
+  background:#c0392b;
+  border:2px solid #888;
 }
 
 .vinyl.playing{animation-play-state:running}
 
-@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
 
-/* 📱 OPTIMITZACIÓ MÒBIL COMPLETA */
-@media (max-width: 768px) {
-  section {
-    background-attachment: scroll;
-    background-position: center center;
-    background-size: cover;
-    padding: 20px;
+/* ─── RESPONSIVE MÒBIL ─── */
+@media (max-width:768px){
+  section{
+    background-attachment:scroll;
+    background-position:center center;
+    background-size:cover;
+    padding:20px;
+    min-height:100svh; /* safe area en iPhones */
   }
 
-  h1 {
-    font-size: 36px;
-    line-height: 1.2;
+  h1{
+    font-size:58px;
+    line-height:1.1;
   }
 
-  h2 {
-    font-size: 24px;
+  h2{font-size:24px}
+
+  p{
+    font-size:15px;
+    padding:0 10px;
   }
 
-  p {
-    font-size: 15px;
-    padding: 0 10px;
+  .invite-text{
+    font-size:12px;
+    letter-spacing:3px;
   }
 
-  .small {
-    font-size: 12px;
+  .small{
+    font-size:11px;
+    letter-spacing:2px;
+    bottom:22px;
   }
 
-  .arrow {
-    font-size: 24px;
-    bottom: 15px;
+  .arrow{
+    font-size:22px;
+    bottom:22px;
   }
 
-  .gallery {
-    gap: 6px;
-  }
+  .gallery{gap:6px}
+  .gallery img{width:70px;height:70px}
 
-  .gallery img {
-    width: 70px;
-    height: 70px;
-  }
+  form{width:90%}
+  input,textarea{font-size:14px}
+  button{font-size:13px;padding:8px 16px}
 
-  form {
-    width: 90%;
-  }
-
-  input, textarea {
-    font-size: 14px;
-  }
-
-  button {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-
-  .vinyl {
-    width: 50px;
-    height: 50px;
-  }
+  .vinyl{width:60px;height:60px}
+  .vinyl-hint{font-size:10px;max-width:75px}
+  .vinyl-arrow{font-size:15px}
+  .vinyl-wrapper{top:14px;right:14px}
+  .countdown{font-size:16px}
 }
 
+/* Tablets */
+@media (min-width:769px) and (max-width:1024px){
+  section{background-attachment:scroll}
+  h1{font-size:48px}
+}
 </style>
 </head>
 <body>
 
 <audio id="music" loop>
-<source src="musica.mp3" type="audio/mpeg">
+  <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<section style="background-image:url('foto1.jpg')"><div class="overlay"><div id="vinyl" class="vinyl" onclick="toggleMusic()"></div><h1>Judit & Josep</h1><div class="small left">24/10/2026</div><div class="small right">Can Marlet</div><div class="arrow" onclick="scrollToSection(1)">↓</div></div></section>
+<!-- SECCIÓ 1: Portada -->
+<section style="background-image:url('foto1.jpg')">
+  <div class="overlay">
 
-<section style="background-image:url('foto2.jpg')"><div class="overlay"><p>Amb 10 anys junts, hem viscut moltes aventures...</p><div class="gallery"><img src="foto2.jpg"><img src="foto3.jpg"><img src="foto4.jpg"><img src="foto5.jpg"><img src="foto6.jpg"></div><p>... però cap aventura ens ha fet tant feliços com passar aquest dia amb tu!</p><div class="arrow" onclick="scrollToSection(2)">↓</div></div></section>
+    <!-- Vinil amb text indicatiu -->
+    <div class="vinyl-wrapper" onclick="toggleMusic()">
+      <div id="vinyl" class="vinyl"></div>
+      <div class="vinyl-arrow">↑</div>
+      <div class="vinyl-hint">Toca el vinil per donar al play a la música</div>
+    </div>
 
-<section style="background-image:url('foto2.jpg')"><div class="overlay"><h2>Guarda la data</h2><p>24/10/2026 - 16:20</p><div class="countdown" id="countdown"></div><button onclick="addToCalendar()">Afegir al calendari</button><div class="arrow" onclick="scrollToSection(3)">↓</div></div></section>
+    <!-- Text central -->
+    <div class="invite-text">Us convidem al nostre casament</div>
+    <h1>Judit<br><span style="font-size:0.6em;color:var(--accent);">&</span><br>Josep</h1>
+    <div class="title-divider">
+      <span class="divider-line"></span>
+      <span class="divider-symbol">✦</span>
+      <span class="divider-line"></span>
+    </div>
 
-<section style="background-image:url('foto2.jpg')"><div class="overlay"><h2>Detalls del casament</h2><p>16:20 - Cerimònia</p><p>18:00 - Aperitiu</p><p>21:00 - Sopar</p><p>23:30 - Festa</p><div class="arrow" onclick="scrollToSection(4)">↓</div></div></section>
+    <!-- Data i lloc -->
+    <div class="small left">24 · 10 · 2026</div>
+    <div class="small right">Can Marlet</div>
 
-<section style="background-image:url('foto2.jpg')"><div class="overlay"><h2>Normes</h2><ul><li>Gaudir molt</li><li>Somriure sempre</li><li>Respectar horaris</li></ul><div class="arrow" onclick="scrollToSection(5)">↓</div></div></section>
+    <div class="arrow" onclick="scrollToSection(1)">↓</div>
+  </div>
+</section>
 
-<section style="background-image:url('foto2.jpg')"><div class="overlay"><h2>Confirmació</h2><p>Data límit: 03/10/2026</p><form><input placeholder="Nom" required><input placeholder="Assistiràs?"><textarea placeholder="Al·lèrgies"></textarea><button>Enviar</button></form><div class="arrow" onclick="scrollToSection(6)">↓</div></div></section>
+<!-- SECCIÓ 2: Galeria -->
+<section style="background-image:url('foto2.jpg')">
+  <div class="overlay">
+    <p>Amb 10 anys junts, hem viscut moltes aventures...</p>
+    <div class="gallery">
+      <img src="foto2.jpg">
+      <img src="foto3.jpg">
+      <img src="foto4.jpg">
+      <img src="foto5.jpg">
+      <img src="foto6.jpg">
+    </div>
+    <p>... però cap aventura ens ha fet tant feliços com passar aquest dia amb tu!</p>
+    <div class="arrow" onclick="scrollToSection(2)">↓</div>
+  </div>
+</section>
 
-<section style="background-image:url('foto2.jpg')"><div class="overlay"><h2>La teva cançó</h2><form><input placeholder="Escriu una cançó" required><button>Enviar</button></form><p>Properament app per fotos</p><div class="arrow" onclick="scrollToSection(7)">↓</div></div></section>
+<!-- SECCIÓ 3: Compta enrere -->
+<section style="background-image:url('foto2.jpg')">
+  <div class="overlay">
+    <h2>Guarda la data</h2>
+    <p>24/10/2026 · 16:20</p>
+    <div class="countdown" id="countdown"></div>
+    <button onclick="addToCalendar()">Afegir al calendari</button>
+    <div class="arrow" onclick="scrollToSection(3)">↓</div>
+  </div>
+</section>
 
-<section style="background-image:url('foto1.jpg')"><div class="overlay"><h2>❤️</h2></div></section>
+<!-- SECCIÓ 4: Detalls -->
+<section style="background-image:url('foto2.jpg')">
+  <div class="overlay">
+    <h2>Detalls del casament</h2>
+    <p>16:20 · Cerimònia</p>
+    <p>18:00 · Aperitiu</p>
+    <p>21:00 · Sopar</p>
+    <p>23:30 · Festa</p>
+    <div class="arrow" onclick="scrollToSection(4)">↓</div>
+  </div>
+</section>
+
+<!-- SECCIÓ 5: Normes -->
+<section style="background-image:url('foto2.jpg')">
+  <div class="overlay">
+    <h2>Normes</h2>
+    <ul style="list-style:none;padding:0;line-height:2.2;font-weight:300;letter-spacing:1px">
+      <li>Gaudir molt</li>
+      <li>Somriure sempre</li>
+      <li>Respectar horaris</li>
+    </ul>
+    <div class="arrow" onclick="scrollToSection(5)">↓</div>
+  </div>
+</section>
+
+<!-- SECCIÓ 6: Confirmació -->
+<section style="background-image:url('foto2.jpg')">
+  <div class="overlay">
+    <h2>Confirmació</h2>
+    <p style="font-weight:300;font-size:14px;letter-spacing:1px">Data límit: 03/10/2026</p>
+    <form>
+      <input placeholder="Nom" required>
+      <input placeholder="Assistiràs?">
+      <textarea placeholder="Al·lèrgies"></textarea>
+      <button type="button">Enviar</button>
+    </form>
+    <div class="arrow" onclick="scrollToSection(6)">↓</div>
+  </div>
+</section>
+
+<!-- SECCIÓ 7: Cançó -->
+<section style="background-image:url('foto2.jpg')">
+  <div class="overlay">
+    <h2>La teva cançó</h2>
+    <form>
+      <input placeholder="Escriu una cançó" required>
+      <button type="button">Enviar</button>
+    </form>
+    <p style="font-weight:300;font-size:13px;letter-spacing:1px;opacity:0.8">Properament app per fotos</p>
+    <div class="arrow" onclick="scrollToSection(7)">↓</div>
+  </div>
+</section>
+
+<!-- SECCIÓ 8: Final -->
+<section style="background-image:url('foto1.jpg')">
+  <div class="overlay">
+    <h2 style="font-size:60px">❤️</h2>
+  </div>
+</section>
 
 <script>
-function scrollToSection(i){document.querySelectorAll('section')[i].scrollIntoView({behavior:'smooth'})}
+function scrollToSection(i){
+  document.querySelectorAll('section')[i].scrollIntoView({behavior:'smooth'});
+}
 
-function toggleMusic(){const m=document.getElementById('music');const v=document.getElementById('vinyl');if(m.paused){m.play();v.classList.add('playing')}else{m.pause();v.classList.remove('playing')}}
+function toggleMusic(){
+  const m = document.getElementById('music');
+  const v = document.getElementById('vinyl');
+  if(m.paused){
+    m.play();
+    v.classList.add('playing');
+  } else {
+    m.pause();
+    v.classList.remove('playing');
+  }
+}
 
-const c=document.getElementById('countdown');
-const d=new Date('Oct 24, 2026 16:20:00').getTime();
+// Compte enrere
+const c = document.getElementById('countdown');
+const d = new Date('Oct 24, 2026 16:20:00').getTime();
 setInterval(()=>{
-const now=new Date().getTime();
-const dist=d-now;
-const days=Math.floor(dist/(1000*60*60*24));
-const h=Math.floor((dist/(1000*60*60))%24);
-const m=Math.floor((dist/1000/60)%60);
-const s=Math.floor((dist/1000)%60);
-c.innerHTML=`${days} dies ${h}h ${m}m ${s}s`},1000);
+  const now = new Date().getTime();
+  const dist = d - now;
+  const days = Math.floor(dist/(1000*60*60*24));
+  const h = Math.floor((dist/(1000*60*60))%24);
+  const m = Math.floor((dist/1000/60)%60);
+  const s = Math.floor((dist/1000)%60);
+  c.innerHTML = `${days} dies &nbsp; ${h}h ${m}m ${s}s`;
+}, 1000);
 
-function addToCalendar(){window.open('https://www.google.com/calendar/render?action=TEMPLATE&text=Casament Judit i Josep&dates=20261024T162000/20261024T230000')}
+function addToCalendar(){
+  window.open('https://www.google.com/calendar/render?action=TEMPLATE&text=Casament+Judit+i+Josep&dates=20261024T162000/20261024T230000');
+}
 </script>
 
 </body>
