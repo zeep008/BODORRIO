@@ -23,16 +23,9 @@ section{
   background-attachment:fixed;
 }
 
-/* Transició cross-fade entre seccions */
-section{
-  opacity:0;
-  transition:opacity 0.9s ease;
-}
-section.visible{
-  opacity:1;
-}
-section:first-of-type{
-  opacity:1;
+/* Separador subtil entre seccions */
+section + section{
+  border-top: 1px solid rgba(232, 216, 195, 0.25);
 }
 
 .overlay{
@@ -190,12 +183,10 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
   line-height:1.4;
 }
 
-/* Fletxa ovalada apuntant cap al vinil */
 .vinyl-arrow{
   font-size:18px;
   opacity:0.8;
   line-height:1;
-  /* La fletxa apunta cap amunt cap al vinil */
   animation:floatUp 2s infinite;
 }
 
@@ -218,7 +209,6 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
   animation:spin 5s linear infinite paused;
 }
 
-/* Punt central del vinil */
 .vinyl::after{
   content:"";
   position:absolute;
@@ -231,9 +221,7 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
 }
 
 .vinyl.playing{animation-play-state:running}
-
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-
 
 /* ─── RESPONSIVE MÒBIL ─── */
 @media (max-width:768px){
@@ -242,44 +230,21 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
     background-position:center center;
     background-size:cover;
     padding:20px;
-    min-height:100svh; /* safe area en iPhones */
+    min-height:100svh;
   }
 
-  h1{
-    font-size:58px;
-    line-height:1.1;
-  }
-
+  h1{font-size:58px;line-height:1.1}
   h2{font-size:24px}
+  p{font-size:15px;padding:0 10px}
 
-  p{
-    font-size:15px;
-    padding:0 10px;
-  }
-
-  .invite-text{
-    font-size:12px;
-    letter-spacing:3px;
-  }
-
-  .small{
-    font-size:11px;
-    letter-spacing:2px;
-    bottom:22px;
-  }
-
-  .arrow{
-    font-size:22px;
-    bottom:22px;
-  }
-
+  .invite-text{font-size:12px;letter-spacing:3px}
+  .small{font-size:11px;letter-spacing:2px;bottom:22px}
+  .arrow{font-size:22px;bottom:22px}
   .gallery{gap:6px}
   .gallery img{width:70px;height:70px}
-
   form{width:90%}
   input,textarea{font-size:14px}
   button{font-size:13px;padding:8px 16px}
-
   .vinyl{width:60px;height:60px}
   .vinyl-hint{font-size:10px;max-width:75px}
   .vinyl-arrow{font-size:15px}
@@ -287,10 +252,9 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
   .countdown{font-size:16px}
 }
 
-/* Tablets */
 @media (min-width:769px) and (max-width:1024px){
   section{background-attachment:scroll}
-  h1{font-size:48px}
+  h1{font-size:72px}
 }
 </style>
 </head>
@@ -304,14 +268,12 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
 <section style="background-image:url('foto1.jpg')">
   <div class="overlay">
 
-    <!-- Vinil amb text indicatiu -->
     <div class="vinyl-wrapper" onclick="toggleMusic()">
       <div id="vinyl" class="vinyl"></div>
       <div class="vinyl-arrow">↑</div>
       <div class="vinyl-hint">Toca el vinil per donar al play a la música</div>
     </div>
 
-    <!-- Text central -->
     <div class="invite-text">Us convidem al nostre casament</div>
     <h1>Judit<br><span style="font-size:0.6em;color:var(--accent);">&</span><br>Josep</h1>
     <div class="title-divider">
@@ -320,10 +282,8 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
       <span class="divider-line"></span>
     </div>
 
-    <!-- Data i lloc -->
     <div class="small left">24 · 10 · 2026</div>
     <div class="small right">Can Marlet</div>
-
     <div class="arrow" onclick="scrollToSection(1)">↓</div>
   </div>
 </section>
@@ -417,20 +377,8 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
 
 <script>
 function scrollToSection(i){
-  const sections = document.querySelectorAll('section');
-  sections[i].scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('section')[i].scrollIntoView({behavior:'smooth'});
 }
-
-// Cross-fade: seccions apareixen en fade quan entren a la vista
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll('section').forEach(s => observer.observe(s));
 
 function toggleMusic(){
   const m = document.getElementById('music');
@@ -444,7 +392,6 @@ function toggleMusic(){
   }
 }
 
-// Compte enrere
 const c = document.getElementById('countdown');
 const d = new Date('Oct 24, 2026 16:20:00').getTime();
 setInterval(()=>{
