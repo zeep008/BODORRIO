@@ -158,7 +158,16 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
 .gallery img{width:120px;height:120px;object-fit:cover;border-radius:10px;transition:transform 0.4s}
 .gallery img:hover{transform:scale(1.1)}
 
-/* ─── VINIL ─── */
+/* Fletxa secció beix */
+section.beige-section .arrow{
+  color:#c9a882;
+}
+
+/* Mosaic responsive */
+@media(max-width:400px){
+  .mosaic-tall{height:200px !important}
+  .mosaic-short{height:160px !important}
+}
 .vinyl-wrapper{
   position:absolute;
   top:20px;
@@ -288,17 +297,48 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight
 </section>
 
 <!-- SECCIÓ 2: Galeria -->
-<section style="background-image:url('foto2.jpg')">
+<section class="beige-section" style="background-image:url('foto2.jpg')">
   <div class="overlay">
-    <p>Amb 10 anys junts, hem viscut moltes aventures...</p>
-    <div class="gallery">
-      <img src="foto2.jpg">
-      <img src="foto3.jpg">
-      <img src="foto4.jpg">
-      <img src="foto5.jpg">
-      <img src="foto6.jpg">
+    <p style="
+      font-family:'Playfair Display',serif;
+      font-style:italic;
+      font-size:26px;
+      font-weight:400;
+      color:white;
+      text-align:center;
+      line-height:1.4;
+      margin:0 0 24px;
+      max-width:340px;
+      text-shadow:0 2px 8px rgba(0,0,0,0.4);
+    ">Amb 10 anys junts, hem viscut moltes aventures...</p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:500px;">
+      <div style="display:flex;gap:10px;">
+        <img src="foto2.jpg" style="flex:1;height:190px;object-fit:cover;border-radius:16px;">
+        <img src="foto3.jpg" style="flex:1;height:190px;object-fit:cover;border-radius:16px;">
+      </div>
+      <div>
+        <img src="foto4.jpg" style="width:100%;height:250px;object-fit:cover;border-radius:16px;display:block;">
+      </div>
+      <div style="display:flex;gap:10px;">
+        <img src="foto5.jpg" style="flex:1;height:190px;object-fit:cover;border-radius:16px;">
+        <img src="foto6.jpg" style="flex:1;height:190px;object-fit:cover;border-radius:16px;">
+      </div>
     </div>
-    <p>... però cap aventura ens ha fet tant feliços com passar aquest dia amb tu!</p>
+
+    <p style="
+      font-family:'Playfair Display',serif;
+      font-style:italic;
+      font-size:17px;
+      color:white;
+      text-align:center;
+      line-height:1.6;
+      margin:24px 0 0;
+      max-width:340px;
+      opacity:0.9;
+      text-shadow:0 2px 8px rgba(0,0,0,0.4);
+    ">... però cap aventura ens ha fet tant feliços com passar aquest dia amb tu!</p>
+
     <div class="arrow" onclick="scrollToSection(2)">↓</div>
   </div>
 </section>
