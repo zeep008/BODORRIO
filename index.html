@@ -432,49 +432,6 @@ section.beige-section .arrow{
       <span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:11px;opacity:0.7;letter-spacing:1px;">Compatible amb iOS i Android</span>
     </div>
 
-    <!-- Modal selecció calendari -->
-    <div id="cal-modal" style="
-      display:none;
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.6);
-      z-index:100;
-      align-items:flex-end;
-      justify-content:center;
-    " onclick="closeCalendarMenu(event)">
-      <div style="
-        background:white;
-        border-radius:20px 20px 0 0;
-        width:100%;
-        max-width:500px;
-        padding:24px 20px 40px;
-        color:#333;
-      ">
-        <div style="width:40px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 20px;"></div>
-        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14px;text-align:center;margin:0 0 20px;color:#666;">Afegir al calendari</p>
-        <div style="display:flex;flex-direction:column;gap:2px;">
-          <button onclick="addToGoogle()" style="
-            border:none;border-bottom:1px solid #f0f0f0;background:white;
-            padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
-            color:#333;cursor:pointer;text-align:left;letter-spacing:0;
-            display:flex;align-items:center;gap:12px;
-          ">📅 Google Calendar</button>
-          <button onclick="addToApple()" style="
-            border:none;border-bottom:1px solid #f0f0f0;background:white;
-            padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
-            color:#333;cursor:pointer;text-align:left;letter-spacing:0;
-            display:flex;align-items:center;gap:12px;
-          ">🍎 Apple Calendar (iOS/Mac)</button>
-          <button onclick="addToOutlook()" style="
-            border:none;background:white;
-            padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
-            color:#333;cursor:pointer;text-align:left;letter-spacing:0;
-            display:flex;align-items:center;gap:12px;
-          ">📧 Outlook / altres</button>
-        </div>
-      </div>
-    </div>
-
     <div class="arrow" onclick="scrollToSection(3)">↓</div>
   </div>
 </section>
@@ -539,6 +496,55 @@ section.beige-section .arrow{
   </div>
 </section>
 
+<!-- MODAL CALENDARI - fora de totes les seccions per z-index correcte -->
+<div id="cal-modal" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:9999;
+  align-items:flex-end;
+  justify-content:center;
+" onclick="closeCalendarMenu(event)">
+  <div style="
+    background:white;
+    border-radius:20px 20px 0 0;
+    width:100%;
+    max-width:500px;
+    padding:24px 20px 40px;
+    color:#333;
+  " onclick="event.stopPropagation()">
+    <div style="width:40px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 20px;"></div>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14px;text-align:center;margin:0 0 20px;color:#666;">Afegir al calendari</p>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <button onclick="addToGoogle()" style="
+        border:none;border-bottom:1px solid #f0f0f0;background:white;
+        padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
+        color:#333;cursor:pointer;text-align:left;letter-spacing:0;
+        display:flex;align-items:center;gap:12px;
+      ">📅 Google Calendar</button>
+      <button onclick="addToApple()" style="
+        border:none;border-bottom:1px solid #f0f0f0;background:white;
+        padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
+        color:#333;cursor:pointer;text-align:left;letter-spacing:0;
+        display:flex;align-items:center;gap:12px;
+      ">🍎 Apple Calendar (iOS/Mac)</button>
+      <button onclick="addToOutlook()" style="
+        border:none;border-bottom:1px solid #f0f0f0;background:white;
+        padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
+        color:#333;cursor:pointer;text-align:left;letter-spacing:0;
+        display:flex;align-items:center;gap:12px;
+      ">📧 Outlook / altres</button>
+      <button onclick="closeCalendarMenu({target:document.getElementById('cal-modal')})" style="
+        border:none;background:white;
+        padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
+        color:#999;cursor:pointer;text-align:center;letter-spacing:1px;
+        font-weight:300;margin-top:4px;width:100%;
+      ">Cancel·lar</button>
+    </div>
+  </div>
+</div>
+
 <script>
 function scrollToSection(i){
   document.querySelectorAll('section')[i].scrollIntoView({behavior:'smooth'});
@@ -573,14 +579,18 @@ setInterval(updateCountdown, 1000);
 // Calendari
 function openCalendarMenu(){
   document.getElementById('cal-modal').style.display='flex';
+  document.body.style.overflow='hidden';
 }
 function closeCalendarMenu(e){
-  if(e.target===document.getElementById('cal-modal'))
+  if(e.target===document.getElementById('cal-modal')){
     document.getElementById('cal-modal').style.display='none';
+    document.body.style.overflow='';
+  }
 }
 function addToGoogle(){
   window.open('https://www.google.com/calendar/render?action=TEMPLATE&text=Casament+Judit+i+Josep&dates=20261024T162000/20261024T235900&details=Us+esperem!&location=Can+Marlet');
   document.getElementById('cal-modal').style.display='none';
+  document.body.style.overflow='';
 }
 function addToApple(){
   const ics=[
@@ -597,10 +607,12 @@ function addToApple(){
   a.href=url; a.download='casament-judit-josep.ics'; a.click();
   URL.revokeObjectURL(url);
   document.getElementById('cal-modal').style.display='none';
+  document.body.style.overflow='';
 }
 function addToOutlook(){
   window.open('https://outlook.live.com/calendar/0/deeplink/compose?subject=Casament+Judit+i+Josep&startdt=2026-10-24T16:20:00&enddt=2026-10-24T23:59:00&body=Us+esperem!&location=Can+Marlet');
   document.getElementById('cal-modal').style.display='none';
+  document.body.style.overflow='';
 }
 function addToCalendar(){ openCalendarMenu(); }
 
