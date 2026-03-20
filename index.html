@@ -10,332 +10,62 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:'Montserrat',sans-serif;color:white}
-
-section{
-  min-height:100vh;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
-}
-
-/* Separador subtil entre seccions */
-section + section{
-  border-top: 1px solid rgba(232, 216, 195, 0.25);
-}
-
-.overlay{
-  background:rgba(0,0,0,0.50);
-  position:absolute;
-  top:0;left:0;
-  width:100%;height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  z-index:2;
-}
-
-/* Overlay per seccions amb altura automàtica (galeria, mapa, timeline, normes) */
-.overlay-auto{
-  background:rgba(0,0,0,0.50);
-  position:relative;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:50px 20px 60px;
-  z-index:2;
-}
-
-h1{
-  font-family:'Parisienne',cursive;
-  font-size:90px;
-  margin:0;
-  line-height:1.1;
-  letter-spacing:2px;
-}
-
-h2{
-  font-family:'Playfair Display',serif;
-  font-size:36px;
-}
-
+section{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;background-size:cover;background-position:center;background-attachment:fixed;}
+section + section{border-top:1px solid rgba(232,216,195,0.25);}
+.overlay{background:rgba(0,0,0,0.50);position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;z-index:2;}
+.overlay-auto{background:rgba(0,0,0,0.50);position:relative;width:100%;display:flex;flex-direction:column;align-items:center;padding:50px 20px 60px;z-index:2;}
+h1{font-family:'Parisienne',cursive;font-size:90px;margin:0;line-height:1.1;letter-spacing:2px;}
+h2{font-family:'Playfair Display',serif;font-size:36px;}
 p{max-width:700px}
-
-.title-divider{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:18px;
-  width:260px;
-}
-
-.divider-line{
-  flex:1;
-  height:1px;
-  background:var(--accent);
-  opacity:0.7;
-}
-
-.divider-symbol{
-  color:var(--accent);
-  font-size:12px;
-  opacity:0.9;
-  line-height:1;
-}
-
-/* Text "Us convidem al nostre casament" */
-.invite-text{
-  font-family:'Montserrat',sans-serif;
-  font-weight:200;
-  font-size:16px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:16px;
-  opacity:0.95;
-}
-
-/* Data i lloc (baix esquerra/dreta) */
-.small{
-  position:absolute;
-  bottom:28px;
-  font-family:'Montserrat',sans-serif;
-  font-weight:300;
-  font-size:13px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:white;
-  opacity:0.9;
-  z-index:3;
-}
-.left{left:24px}
-.right{right:24px}
-
-/* Fletxa de navegació */
-.arrow{
-  position:absolute;
-  bottom:28px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:26px;
-  cursor:pointer;
-  opacity:0.75;
-  animation:float 2s infinite;
-  z-index:3;
-}
-
-@keyframes float{
-  0%{transform:translateX(-50%) translateY(0)}
-  50%{transform:translateX(-50%) translateY(10px)}
-  100%{transform:translateX(-50%) translateY(0)}
-}
-
+.title-divider{display:flex;align-items:center;gap:12px;margin-top:18px;width:260px;}
+.divider-line{flex:1;height:1px;background:var(--accent);opacity:0.7;}
+.divider-symbol{color:var(--accent);font-size:12px;opacity:0.9;line-height:1;}
+.invite-text{font-family:'Montserrat',sans-serif;font-weight:200;font-size:16px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;opacity:0.95;}
+.small{position:absolute;bottom:28px;font-family:'Montserrat',sans-serif;font-weight:300;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:white;opacity:0.9;z-index:3;}
+.left{left:24px}.right{right:24px}
+.arrow{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:26px;cursor:pointer;opacity:0.75;animation:float 2s infinite;z-index:3;}
+@keyframes float{0%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}100%{transform:translateX(-50%) translateY(0)}}
 .countdown{font-size:20px;margin-top:20px;letter-spacing:2px;font-weight:300}
-
-button{
-  padding:10px 24px;
-  border:1px solid var(--accent);
-  background:transparent;
-  color:white;
-  font-family:'Montserrat',sans-serif;
-  font-weight:300;
-  letter-spacing:2px;
-  cursor:pointer;
-  transition:background 0.3s;
-  margin-top:10px;
-}
+button{padding:10px 24px;border:1px solid var(--accent);background:transparent;color:white;font-family:'Montserrat',sans-serif;font-weight:300;letter-spacing:2px;cursor:pointer;transition:background 0.3s;margin-top:10px;}
 button:hover{background:rgba(232,216,195,0.2)}
-
 form{display:flex;flex-direction:column;gap:10px;width:300px}
-input,textarea{
-  padding:10px;
-  border:none;
-  border-bottom:1px solid var(--accent);
-  background:transparent;
-  color:white;
-  font-family:'Montserrat',sans-serif;
-  font-weight:300;
-  outline:none;
-}
+input,textarea{padding:10px;border:none;border-bottom:1px solid var(--accent);background:transparent;color:white;font-family:'Montserrat',sans-serif;font-weight:300;outline:none;}
 input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.6);font-weight:300}
-
 .gallery{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .gallery img{width:120px;height:120px;object-fit:cover;border-radius:10px;transition:transform 0.4s}
 .gallery img:hover{transform:scale(1.1)}
-
-/* Fletxa secció beix */
-section.beige-section .arrow{
-  color:#c9a882;
-}
-
-/* Mosaic responsive */
-@media(max-width:400px){
-  .mosaic-tall{height:200px !important}
-  .mosaic-short{height:160px !important}
-}
-
-/* Caixes comptador */
-.cbox{
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,0.25);
-  border-radius:12px;
-  padding:14px 10px 10px;
-  min-width:64px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
-}
-.cnum{
-  font-family:'Playfair Display',serif;
-  font-size:32px;
-  font-weight:700;
-  line-height:1;
-  color:white;
-}
-.clbl{
-  font-family:'Montserrat',sans-serif;
-  font-size:9px;
-  font-weight:400;
-  letter-spacing:2px;
-  color:rgba(255,255,255,0.75);
-}
-@media(max-width:768px){
-  .cbox{min-width:52px;padding:10px 6px 8px}
-  .cnum{font-size:26px}
-  .clbl{font-size:8px}
-}
-.vinyl-wrapper{
-  position:absolute;
-  top:20px;
-  right:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:6px;
-  cursor:pointer;
-  z-index:10;
-}
-
-.vinyl-hint{
-  font-family:'Montserrat',sans-serif;
-  font-weight:300;
-  font-size:11px;
-  letter-spacing:1px;
-  color:white;
-  opacity:0.85;
-  text-align:center;
-  max-width:90px;
-  line-height:1.4;
-}
-
-.vinyl-arrow{
-  font-size:18px;
-  opacity:0.8;
-  line-height:1;
-  animation:floatUp 2s infinite;
-}
-
-@keyframes floatUp{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-5px)}
-  100%{transform:translateY(0)}
-}
-
-.vinyl{
-  width:72px;
-  height:72px;
-  border-radius:50%;
-  background:
-    radial-gradient(circle at 50% 50%, #222 18%, transparent 18%),
-    repeating-radial-gradient(circle at 50% 50%, #1a1a1a 0px, #111 2px, #2a2a2a 4px, #111 6px);
-  border:4px solid #555;
-  box-shadow:0 0 0 2px #333, 0 4px 15px rgba(0,0,0,0.6);
-  position:relative;
-  animation:spin 5s linear infinite paused;
-}
-
-.vinyl::after{
-  content:"";
-  position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:14px;height:14px;
-  border-radius:50%;
-  background:#c0392b;
-  border:2px solid #888;
-}
-
+section.beige-section .arrow{color:#c9a882;}
+@media(max-width:400px){.mosaic-tall{height:200px !important}.mosaic-short{height:160px !important}}
+.cbox{background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:14px 10px 10px;min-width:64px;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.cnum{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1;color:white;}
+.clbl{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:400;letter-spacing:2px;color:rgba(255,255,255,0.75);}
+@media(max-width:768px){.cbox{min-width:52px;padding:10px 6px 8px}.cnum{font-size:26px}.clbl{font-size:8px}}
+.vinyl-wrapper{position:absolute;top:20px;right:20px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;z-index:10;}
+.vinyl-hint{font-family:'Montserrat',sans-serif;font-weight:300;font-size:11px;letter-spacing:1px;color:white;opacity:0.85;text-align:center;max-width:90px;line-height:1.4;}
+.vinyl-arrow{font-size:18px;opacity:0.8;line-height:1;animation:floatUp 2s infinite;}
+@keyframes floatUp{0%{transform:translateY(0)}50%{transform:translateY(-5px)}100%{transform:translateY(0)}}
+.vinyl{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 50% 50%, #222 18%, transparent 18%),repeating-radial-gradient(circle at 50% 50%, #1a1a1a 0px, #111 2px, #2a2a2a 4px, #111 6px);border:4px solid #555;box-shadow:0 0 0 2px #333, 0 4px 15px rgba(0,0,0,0.6);position:relative;animation:spin 5s linear infinite paused;}
+.vinyl::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#c0392b;border:2px solid #888;}
 .vinyl.playing{animation-play-state:running}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-
-/* ─── RESPONSIVE MÒBIL ─── */
-@media (max-width:1024px){
-  section{
-    background-attachment:scroll;
-    background-position:center center;
-    background-size:cover;
-    padding:20px;
-    min-height:100svh;
-  }
-
-  h1{font-size:58px;line-height:1.1}
-  h2{font-size:24px}
-  p{font-size:15px;padding:0 10px}
-
-  .invite-text{font-size:12px;letter-spacing:3px}
-  .small{font-size:11px;letter-spacing:2px;bottom:22px}
-  .arrow{font-size:22px;bottom:22px}
-  .gallery{gap:6px}
-  .gallery img{width:70px;height:70px}
-  form{width:90%}
-  input,textarea{font-size:14px}
-  button{font-size:13px;padding:8px 16px}
-  .vinyl{width:60px;height:60px}
-  .vinyl-hint{font-size:10px;max-width:75px}
-  .vinyl-arrow{font-size:15px}
-  .vinyl-wrapper{top:14px;right:14px}
-  .countdown{font-size:16px}
-}
-
-@media (min-width:769px) and (max-width:1024px){
-  h1{font-size:72px}
-}
+@media (max-width:1024px){section{background-attachment:scroll;background-position:center center;background-size:cover;padding:20px;min-height:100svh;}h1{font-size:58px;line-height:1.1}h2{font-size:24px}p{font-size:15px;padding:0 10px}.invite-text{font-size:12px;letter-spacing:3px}.small{font-size:11px;letter-spacing:2px;bottom:22px}.arrow{font-size:22px;bottom:22px}.gallery{gap:6px}.gallery img{width:70px;height:70px}form{width:90%}input,textarea{font-size:14px}button{font-size:13px;padding:8px 16px}.vinyl{width:60px;height:60px}.vinyl-hint{font-size:10px;max-width:75px}.vinyl-arrow{font-size:15px}.vinyl-wrapper{top:14px;right:14px}.countdown{font-size:16px}}
+@media (min-width:769px) and (max-width:1024px){h1{font-size:72px}}
 </style>
 </head>
 <body>
-
-<audio id="music" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
+<audio id="music" loop><source src="musica.mp3" type="audio/mpeg"></audio>
 
 <!-- SECCIÓ 1: Portada -->
 <section style="background-image:url('foto1.jpg')">
   <div class="overlay">
-
     <div class="vinyl-wrapper" onclick="toggleMusic()">
       <div id="vinyl" class="vinyl"></div>
       <div class="vinyl-arrow">↑</div>
-      <div class="vinyl-hint">Toca el vinil per donar al play a la música</div>
+      <div class="vinyl-hint">Toca el vinil per fer sonar la música</div>
     </div>
-
     <div class="invite-text">Us convidem al nostre casament</div>
     <h1>Judit<br><span style="font-size:0.6em;color:var(--accent);">&</span><br>Josep</h1>
-    <div class="title-divider">
-      <span class="divider-line"></span>
-      <span class="divider-symbol">✦</span>
-      <span class="divider-line"></span>
-    </div>
-
+    <div class="title-divider"><span class="divider-line"></span><span class="divider-symbol">✦</span><span class="divider-line"></span></div>
     <div class="small left">24 · 10 · 2026</div>
     <div class="small right">Can Marlet</div>
     <div class="arrow" onclick="scrollToSection(1)">↓</div>
@@ -345,47 +75,19 @@ section.beige-section .arrow{
 <!-- SECCIÓ 2: Galeria -->
 <section class="beige-section" style="background-image:url('foto2.jpg'); min-height:auto; height:auto; padding:0;">
   <div class="overlay-auto">
-
-    <p style="
-      font-family:'Playfair Display',serif;
-      font-style:italic;
-      font-size:24px;
-      font-weight:400;
-      color:white;
-      text-align:center;
-      line-height:1.4;
-      margin:0 0 24px;
-      max-width:360px;
-      text-shadow:0 2px 8px rgba(0,0,0,0.4);
-    ">Amb 10 anys junts, hem viscut moltes aventures...</p>
-
+    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:24px;font-weight:400;color:white;text-align:center;line-height:1.4;margin:0 0 24px;max-width:360px;text-shadow:0 2px 8px rgba(0,0,0,0.4);">Amb 10 anys junts, hem viscut moltes aventures...</p>
     <div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:480px;padding:0 4px;">
       <div style="display:flex;gap:8px;">
         <img src="foto2.jpg" style="flex:1;min-width:0;aspect-ratio:1;object-fit:cover;border-radius:14px;">
         <img src="foto3.jpg" style="flex:1;min-width:0;aspect-ratio:1;object-fit:cover;border-radius:14px;">
       </div>
-      <div>
-        <img src="foto4.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;display:block;">
-      </div>
+      <div><img src="foto4.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;display:block;"></div>
       <div style="display:flex;gap:8px;">
         <img src="foto5.jpg" style="flex:1;min-width:0;aspect-ratio:1;object-fit:cover;border-radius:14px;">
         <img src="foto6.jpg" style="flex:1;min-width:0;aspect-ratio:1;object-fit:cover;border-radius:14px;">
       </div>
     </div>
-
-    <p style="
-      font-family:'Playfair Display',serif;
-      font-style:italic;
-      font-size:16px;
-      color:white;
-      text-align:center;
-      line-height:1.6;
-      margin:24px 0 0;
-      max-width:340px;
-      opacity:0.9;
-      text-shadow:0 2px 8px rgba(0,0,0,0.4);
-    ">... però cap aventura ens ha fet tant feliços com passar aquest dia amb tu!</p>
-
+    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:white;text-align:center;line-height:1.6;margin:24px 0 0;max-width:340px;opacity:0.9;text-shadow:0 2px 8px rgba(0,0,0,0.4);">... però cap aventura ens ha fet tant feliços com passar aquest dia amb tu!</p>
     <div class="arrow" style="position:relative;bottom:auto;left:auto;transform:none;margin-top:28px;" onclick="scrollToSection(2)">↓</div>
   </div>
 </section>
@@ -395,43 +97,27 @@ section.beige-section .arrow{
   <div class="overlay-auto" style="min-height:100vh;justify-content:center;">
     <div class="invite-text">No t'ho perdis</div>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(42px,8vw,64px);font-weight:700;line-height:1.1;margin:0 0 20px;text-align:center;">Guarda la<br>Data!</h2>
-
-    <!-- Data amb línies decoratives -->
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;opacity:0.9;">
       <div style="height:1px;width:40px;background:var(--accent);"></div>
       <span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:13px;letter-spacing:2px;">24/10/2026 · 16:20</span>
       <div style="height:1px;width:40px;background:var(--accent);"></div>
     </div>
-
-    <!-- Caixes comptador -->
     <div style="display:flex;gap:10px;margin-bottom:32px;" id="countdown-boxes">
       <div class="cbox"><span class="cnum" id="cd-dies">--</span><span class="clbl">DIES</span></div>
       <div class="cbox"><span class="cnum" id="cd-hores">--</span><span class="clbl">HORES</span></div>
       <div class="cbox"><span class="cnum" id="cd-minuts">--</span><span class="clbl">MINUTS</span></div>
       <div class="cbox"><span class="cnum" id="cd-segons">--</span><span class="clbl">SEGONS</span></div>
     </div>
-
-    <!-- Botó calendari -->
     <div onclick="openCalendarMenu()" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div style="
-        background:white;
-        border-radius:10px;
-        width:44px;height:44px;
-        display:flex;align-items:center;justify-content:center;
-        box-shadow:0 2px 8px rgba(0,0,0,0.3);
-        overflow:hidden;
-      ">
+      <div style="background:white;border-radius:10px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.3);overflow:hidden;">
         <div style="width:100%;text-align:center;">
-          <div style="background:#e74c3c;color:white;font-size:8px;font-weight:600;letter-spacing:1px;padding:2px 0;">
-            OCT
-          </div>
+          <div style="background:#e74c3c;color:white;font-size:8px;font-weight:600;letter-spacing:1px;padding:2px 0;">OCT</div>
           <div style="color:#333;font-size:18px;font-weight:700;line-height:1.4;">24</div>
         </div>
       </div>
       <span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:14px;letter-spacing:1px;">Afegeix al calendari</span>
       <span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:11px;opacity:0.7;letter-spacing:1px;">Compatible amb iOS i Android</span>
     </div>
-
     <div class="arrow" onclick="scrollToSection(3)">↓</div>
   </div>
 </section>
@@ -439,195 +125,106 @@ section.beige-section .arrow{
 <!-- SECCIÓ 4: A On? -->
 <section style="background-image:url('foto2.jpg'); min-height:auto; height:auto; padding:0;">
   <div class="overlay-auto" style="padding:50px 20px 70px;">
-
     <div class="invite-text">I no et perdis</div>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(40px,8vw,60px);font-weight:700;line-height:1.1;margin:0 0 24px;text-align:center;">A On?</h2>
-
-    <!-- Nom masia -->
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
       <div style="height:1px;width:30px;background:var(--accent);opacity:0.7;"></div>
       <span style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);">CAN MARLET</span>
       <div style="height:1px;width:30px;background:var(--accent);opacity:0.7;"></div>
     </div>
-
-    <!-- Text descripció -->
-    <p style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.85);line-height:1.7;text-align:center;max-width:360px;margin:0 0 28px;">
-      A 40 minuts de Barcelona trobem la Masia Can Marlet, en el petit municipi de Riells del Montseny, una Masia en plena natura.
-    </p>
-
-    <!-- Mapa -->
+    <p style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.85);line-height:1.7;text-align:center;max-width:360px;margin:0 0 28px;">A 40 minuts de Barcelona trobem la Masia Can Marlet, en el petit municipi de Riells del Montseny, una Masia en plena natura.</p>
     <div style="width:100%;max-width:420px;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.4);margin-bottom:16px;">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.0!2d2.5051352!3d41.7813826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12bb2c4e578a0d97%3A0x2d38877cb9319932!2sCan+Marlet+Montseny+Hotel+Events!5e0!3m2!1sca!2ses!4v1700000000000!5m2!1sca!2ses"
-        width="100%"
-        height="320"
-        style="border:0;display:block;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.0!2d2.5051352!3d41.7813826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12bb2c4e578a0d97%3A0x2d38877cb9319932!2sCan+Marlet+Montseny+Hotel+Events!5e0!3m2!1sca!2ses!4v1700000000000!5m2!1sca!2ses" width="100%" height="320" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-
-    <!-- Botó obrir mapa -->
-    <a href="https://maps.app.goo.gl/QhXVD81pBayweuz77" target="_blank" style="
-      display:inline-flex;align-items:center;gap:8px;
-      font-family:'Montserrat',sans-serif;font-weight:300;font-size:12px;
-      letter-spacing:2px;text-transform:uppercase;
-      color:white;text-decoration:none;
-      border:1px solid rgba(255,255,255,0.4);
-      padding:10px 20px;border-radius:30px;
-      background:rgba(255,255,255,0.1);
-      backdrop-filter:blur(4px);
-      -webkit-backdrop-filter:blur(4px);
-    ">📍 Obrir al mapa</a>
-
+    <a href="https://maps.app.goo.gl/QhXVD81pBayweuz77" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-weight:300;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:white;text-decoration:none;border:1px solid rgba(255,255,255,0.4);padding:10px 20px;border-radius:30px;background:rgba(255,255,255,0.1);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);">📍 Obrir al mapa</a>
     <div class="arrow" style="position:relative;bottom:auto;left:auto;transform:none;margin-top:32px;" onclick="scrollToSection(4)">↓</div>
   </div>
 </section>
 
 <!-- SECCIÓ 5: Detalls -->
 <section style="background-image:url('foto2.jpg'); min-height:auto; height:auto; padding:0;">
-  <div class="overlay-auto" style="padding:50px 0 70px;">
-
+  <div class="overlay-auto" style="padding:50px 20px 70px;">
     <div class="invite-text">El gran dia</div>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(36px,7vw,52px);font-weight:700;line-height:1.1;margin:0 0 10px;text-align:center;">Detalls del<br>Casament</h2>
-    <p style="font-family:'Montserrat',sans-serif;font-style:italic;font-size:13px;font-weight:300;color:rgba(255,255,255,0.75);letter-spacing:1px;margin:0 0 36px;">24/10/2026 · Can Marlet</p>
-
-    <!-- Timeline -->
-    <div style="position:relative;width:100%;max-width:420px;padding:0 20px 0 70px;">
-
-      <!-- Línia vertical -->
-      <div style="position:absolute;left:34px;top:12px;bottom:12px;width:1px;background:rgba(255,255,255,0.25);"></div>
-
-      <!-- BENVINGUDA -->
-      <div style="position:relative;margin-bottom:20px;">
-        <div style="position:absolute;left:-36px;top:14px;width:44px;height:44px;border-radius:50%;background:#c9a47a;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;color:white;letter-spacing:0.5px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">16:30</div>
-        <div style="background:white;border-radius:16px;overflow:hidden;">
-          <div style="width:100%;height:140px;background-image:url('foto2.jpg');background-size:cover;background-position:center;"></div>
-          <div style="padding:16px 16px 18px;">
-            <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#2c1a0e;margin-bottom:6px;">Benvinguda</div>
-            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#6b4c35;line-height:1.6;">Arribada dels convidats i còctel de benvinguda al jardí.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CERIMÒNIA -->
-      <div style="position:relative;margin-bottom:20px;">
-        <div style="position:absolute;left:-36px;top:14px;width:44px;height:44px;border-radius:50%;background:#c9a47a;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;color:white;letter-spacing:0.5px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">17:00</div>
-        <div style="background:white;border-radius:16px;overflow:hidden;">
-          <div style="width:100%;height:140px;background-image:url('foto3.jpg');background-size:cover;background-position:center;"></div>
-          <div style="padding:16px 16px 18px;">
-            <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#2c1a0e;margin-bottom:6px;">Cerimònia</div>
-            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#6b4c35;line-height:1.6;">Celebració de la cerimònia civil als jardins de Can Marlet.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- APERITIU -->
-      <div style="position:relative;margin-bottom:20px;">
-        <div style="position:absolute;left:-36px;top:14px;width:44px;height:44px;border-radius:50%;background:#c9a47a;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;color:white;letter-spacing:0.5px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">18:00</div>
-        <div style="background:white;border-radius:16px;overflow:hidden;">
-          <div style="width:100%;height:140px;background-image:url('foto4.jpg');background-size:cover;background-position:center;"></div>
-          <div style="padding:16px 16px 18px;">
-            <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#2c1a0e;margin-bottom:6px;">Aperitiu</div>
-            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#6b4c35;line-height:1.6;">Aperitiu i hora de còctels mentre el sol es pon.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SOPAR -->
-      <div style="position:relative;margin-bottom:20px;">
-        <div style="position:absolute;left:-36px;top:14px;width:44px;height:44px;border-radius:50%;background:#c9a47a;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;color:white;letter-spacing:0.5px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">20:00</div>
-        <div style="background:white;border-radius:16px;overflow:hidden;">
-          <div style="width:100%;height:140px;background-image:url('foto5.jpg');background-size:cover;background-position:center;"></div>
-          <div style="padding:16px 16px 18px;">
-            <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#2c1a0e;margin-bottom:6px;">Sopar</div>
-            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#6b4c35;line-height:1.6;">Sopar de gala amb els éssers més estimats.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FESTA -->
-      <div style="position:relative;margin-bottom:0;">
-        <div style="position:absolute;left:-36px;top:14px;width:44px;height:44px;border-radius:50%;background:#c9a47a;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;color:white;letter-spacing:0.5px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">22:30</div>
-        <div style="background:white;border-radius:16px;overflow:hidden;">
-          <div style="width:100%;height:140px;background-image:url('foto6.jpg');background-size:cover;background-position:center;"></div>
-          <div style="padding:16px 16px 18px;">
-            <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#2c1a0e;margin-bottom:6px;">Festa</div>
-            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;color:#6b4c35;line-height:1.6;">Que comenci el ball! Una nit inoblidable ens espera.</div>
-            <div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid #f0e8dc;">
-              <span style="font-size:16px;">🔇</span>
-              <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:400;color:#9b7a5e;">Fi de festa a les <strong>02:30</strong></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <p style="font-family:'Montserrat',sans-serif;font-style:italic;font-size:13px;font-weight:300;color:rgba(255,255,255,0.75);letter-spacing:1px;margin:0 0 20px;">24/10/2026 · Can Marlet</p>
+    <div style="width:100%;max-width:400px;">
+    <svg width="100%" viewBox="0 0 400 820" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 10 C197 60, 203 120, 200 180 C197 240, 203 300, 200 360 C197 420, 203 480, 200 540 C197 600, 203 660, 200 720 C198 760, 201 790, 200 815" fill="none" stroke="rgba(232,216,195,0.4)" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M203 90 C210 85, 220 82, 224 86 C220 90, 210 93, 203 90 Z" fill="rgba(232,216,195,0.3)" stroke="rgba(232,216,195,0.4)" stroke-width="0.5"/>
+      <path d="M197 105 C190 100, 180 97, 176 101 C180 105, 190 108, 197 105 Z" fill="rgba(232,216,195,0.25)" stroke="rgba(232,216,195,0.35)" stroke-width="0.5"/>
+      <path d="M203 270 C211 265, 222 263, 226 267 C222 271, 211 273, 203 270 Z" fill="rgba(232,216,195,0.3)" stroke="rgba(232,216,195,0.4)" stroke-width="0.5"/>
+      <path d="M197 285 C189 280, 178 278, 174 282 C178 286, 189 288, 197 285 Z" fill="rgba(232,216,195,0.25)" stroke="rgba(232,216,195,0.35)" stroke-width="0.5"/>
+      <path d="M203 510 C211 505, 223 503, 227 507 C223 511, 211 513, 203 510 Z" fill="rgba(232,216,195,0.3)" stroke="rgba(232,216,195,0.4)" stroke-width="0.5"/>
+      <path d="M197 525 C189 520, 177 518, 173 522 C177 526, 189 528, 197 525 Z" fill="rgba(232,216,195,0.25)" stroke="rgba(232,216,195,0.35)" stroke-width="0.5"/>
+      <path d="M203 635 C210 630, 221 628, 225 632 C221 636, 210 638, 203 635 Z" fill="rgba(232,216,195,0.3)" stroke="rgba(232,216,195,0.4)" stroke-width="0.5"/>
+      <path d="M197 648 C190 643, 179 641, 175 645 C179 649, 190 651, 197 648 Z" fill="rgba(232,216,195,0.25)" stroke="rgba(232,216,195,0.35)" stroke-width="0.5"/>
+      <path d="M200 60 C192 60, 178 59, 162 59" fill="none" stroke="rgba(232,216,195,0.4)" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="140" cy="59" r="18" fill="rgba(255,255,255,0.1)" stroke="rgba(232,216,195,0.55)" stroke-width="1"/>
+      <text x="140" y="66" text-anchor="middle" style="font-size:17px;">📍</text>
+      <text x="50" y="53" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;fill:#e8d8c3;letter-spacing:0.8px;">16:30H</text>
+      <text x="30" y="67" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;fill:rgba(255,255,255,0.78);letter-spacing:1.2px;">ARRIBADA</text>
+      <path d="M200 160 C208 160, 222 159, 238 159" fill="none" stroke="rgba(232,216,195,0.4)" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="260" cy="159" r="18" fill="rgba(255,255,255,0.1)" stroke="rgba(232,216,195,0.55)" stroke-width="1"/>
+      <text x="260" y="166" text-anchor="middle" style="font-size:17px;">💍</text>
+      <text x="340" y="153" text-anchor="end" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;fill:#e8d8c3;letter-spacing:0.8px;">17:00H</text>
+      <text x="367" y="167" text-anchor="end" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;fill:rgba(255,255,255,0.78);letter-spacing:1.2px;">CERIMÒNIA</text>
+      <path d="M200 260 C192 260, 178 259, 162 259" fill="none" stroke="rgba(232,216,195,0.4)" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="140" cy="259" r="18" fill="rgba(255,255,255,0.1)" stroke="rgba(232,216,195,0.55)" stroke-width="1"/>
+      <text x="140" y="266" text-anchor="middle" style="font-size:17px;">🥂</text>
+      <text x="50" y="253" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;fill:#e8d8c3;letter-spacing:0.8px;">18:00H</text>
+      <text x="38" y="267" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;fill:rgba(255,255,255,0.78);letter-spacing:1.2px;">APERITIU</text>
+      <path d="M200 360 C208 360, 222 359, 238 359" fill="none" stroke="rgba(232,216,195,0.4)" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="260" cy="359" r="18" fill="rgba(255,255,255,0.1)" stroke="rgba(232,216,195,0.55)" stroke-width="1"/>
+      <text x="260" y="366" text-anchor="middle" style="font-size:17px;">🍽️</text>
+      <text x="340" y="353" text-anchor="end" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;fill:#e8d8c3;letter-spacing:0.8px;">20:00H</text>
+      <text x="333" y="367" text-anchor="end" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;fill:rgba(255,255,255,0.78);letter-spacing:1.2px;">SOPAR</text>
+      <path d="M200 460 C192 460, 178 459, 162 459" fill="none" stroke="rgba(232,216,195,0.4)" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="140" cy="459" r="18" fill="rgba(255,255,255,0.1)" stroke="rgba(232,216,195,0.55)" stroke-width="1"/>
+      <text x="140" y="466" text-anchor="middle" style="font-size:17px;">🎂</text>
+      <text x="50" y="453" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;fill:#e8d8c3;letter-spacing:0.8px;">21:15H</text>
+      <text x="47" y="467" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;fill:rgba(255,255,255,0.78);letter-spacing:1.2px;">PASTÍS</text>
+      <path d="M200 560 C208 560, 222 559, 238 559" fill="none" stroke="rgba(232,216,195,0.4)" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="260" cy="559" r="18" fill="rgba(255,255,255,0.1)" stroke="rgba(232,216,195,0.55)" stroke-width="1"/>
+      <text x="260" y="566" text-anchor="middle" style="font-size:17px;">🎵</text>
+      <text x="340" y="553" text-anchor="end" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;fill:#e8d8c3;letter-spacing:0.8px;">22:30H</text>
+      <text x="388" y="567" text-anchor="end" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;fill:rgba(255,255,255,0.78);letter-spacing:1.2px;">INICI DEL BALL</text>
+      <path d="M200 660 C192 660, 178 659, 162 659" fill="none" stroke="rgba(232,216,195,0.4)" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="140" cy="659" r="18" fill="rgba(255,255,255,0.1)" stroke="rgba(232,216,195,0.55)" stroke-width="1"/>
+      <text x="140" y="666" text-anchor="middle" style="font-size:17px;">🍻</text>
+      <text x="50" y="650" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;fill:#e8d8c3;letter-spacing:0.8px;">01:30H</text>
+      <text x="13" y="664" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;fill:rgba(255,255,255,0.78);letter-spacing:1.2px;">FINAL BARRA</text>
+      <text x="50" y="676" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;fill:rgba(255,255,255,0.78);letter-spacing:1.2px;">LLIURE</text>
+      <path d="M200 760 C208 760, 222 759, 238 759" fill="none" stroke="rgba(232,216,195,0.4)" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="260" cy="759" r="18" fill="rgba(255,255,255,0.1)" stroke="rgba(232,216,195,0.55)" stroke-width="1"/>
+      <text x="260" y="766" text-anchor="middle" style="font-size:17px;">🔇</text>
+      <text x="340" y="753" text-anchor="end" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;fill:#e8d8c3;letter-spacing:0.8px;">02:30H</text>
+      <text x="372" y="767" text-anchor="end" style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;fill:rgba(255,255,255,0.78);letter-spacing:1.2px;">FINAL FESTA</text>
+    </svg>
     </div>
-
-    <div class="arrow" style="position:relative;bottom:auto;left:auto;transform:none;margin-top:36px;" onclick="scrollToSection(5)">↓</div>
+    <div class="arrow" style="position:relative;bottom:auto;left:auto;transform:none;margin-top:20px;" onclick="scrollToSection(5)">↓</div>
   </div>
 </section>
 
 <!-- SECCIÓ 6: Normes -->
 <section style="background-image:url('foto2.jpg'); min-height:auto; height:auto; padding:0;">
   <div class="overlay-auto" style="padding:50px 20px 70px;">
-
     <div class="invite-text">Recordeu</div>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(36px,7vw,52px);font-weight:700;line-height:1.1;margin:0 0 8px;text-align:center;">Normes del<br>Casament</h2>
-
-    <!-- Línia decorativa -->
     <div style="display:flex;align-items:center;gap:10px;margin:12px auto 32px;width:120px;">
       <div style="flex:1;height:1px;background:var(--accent);opacity:0.6;"></div>
       <span style="color:var(--accent);font-size:10px;opacity:0.8;">✦</span>
       <div style="flex:1;height:1px;background:var(--accent);opacity:0.6;"></div>
     </div>
-
-    <!-- Targetes normes -->
     <div style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:420px;">
-
-      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 18px;display:flex;align-items:center;gap:16px;">
-        <span style="font-size:28px;flex-shrink:0;">📵</span>
-        <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Deixeu els mòbils a la butxaca durant la cerimònia. Viviu el moment!</span>
-      </div>
-
-      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 18px;display:flex;align-items:center;gap:16px;">
-        <span style="font-size:28px;flex-shrink:0;">🌸</span>
-        <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Codi de vestimenta: elegant/festiu. Eviteu el blanc i el negre pur.</span>
-      </div>
-
-      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 18px;display:flex;align-items:center;gap:16px;">
-        <span style="font-size:28px;flex-shrink:0;">🪩</span>
-        <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Prepareu-vos per ballar tota la nit. Porteu còmodes o canvi de sabates!</span>
-      </div>
-
-      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 18px;display:flex;align-items:center;gap:16px;">
-        <span style="font-size:28px;flex-shrink:0;">📸</span>
-        <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Fotos i vídeos benvinguts durant la festa. Compartiu-los amb nosaltres!</span>
-      </div>
-
-      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 18px;display:flex;align-items:center;gap:16px;">
-        <span style="font-size:28px;flex-shrink:0;">🥂</span>
-        <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Brindeu amb nosaltres! Hi haurà begudes per a tothom.</span>
-      </div>
-
-      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 18px;display:flex;align-items:center;gap:16px;">
-        <span style="font-size:28px;flex-shrink:0;">⏰</span>
-        <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Puntualitat s'agraeix. La cerimònia comença a les 17:00 en punt.</span>
-      </div>
-
-      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 18px;display:flex;align-items:center;gap:16px;">
-        <span style="font-size:28px;flex-shrink:0;">🚗</span>
-        <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Prevista zona d'aparcament a la finca. Consulteu l'adreça al mapa.</span>
-      </div>
-
-      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 18px;display:flex;align-items:center;gap:16px;">
-        <span style="font-size:28px;flex-shrink:0;">💕</span>
-        <span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Veniu amb ganes d'estimar i ser estimats. És el nostre gran dia!</span>
-      </div>
-
+      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;"><span style="font-size:28px;flex-shrink:0;">📵</span><span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Deixeu els mòbils a la butxaca durant la cerimònia. Viviu el moment!</span></div>
+      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🌸</span><span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Codi de vestimenta: elegant/festiu. Eviteu el blanc i el negre pur.</span></div>
+      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🪩</span><span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Prepareu-vos per ballar tota la nit. Porteu calçat còmode o canvi de sabates!</span></div>
+      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;"><span style="font-size:28px;flex-shrink:0;">📸</span><span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Fotos i vídeos benvinguts durant la festa. Compartiu-los amb nosaltres!</span></div>
+      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🥂</span><span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Brindeu amb nosaltres! Hi haurà begudes per a tothom.</span></div>
+      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;"><span style="font-size:28px;flex-shrink:0;">⏰</span><span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">S'agraeix la puntualitat. La cerimònia comença a les 17:00 en punt.</span></div>
+      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;"><span style="font-size:28px;flex-shrink:0;">🚗</span><span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Prevista zona d'aparcament a la finca. Consulteu l'adreça al mapa.</span></div>
+      <div style="background:rgba(40,25,15,0.65);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;display:flex;align-items:center;gap:16px;"><span style="font-size:28px;flex-shrink:0;">💕</span><span style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.6;">Veniu amb ganes d'estimar i ser estimats. És el nostre gran dia!</span></div>
     </div>
-
     <div class="arrow" style="position:relative;bottom:auto;left:auto;transform:none;margin-top:36px;" onclick="scrollToSection(6)">↓</div>
   </div>
 </section>
@@ -635,13 +232,20 @@ section.beige-section .arrow{
 <!-- SECCIÓ 7: Confirmació -->
 <section style="background-image:url('foto2.jpg'); min-height:auto; height:auto; padding:0;">
   <div class="overlay-auto" style="min-height:100vh;justify-content:center;">
-    <h2>Confirmació</h2>
+    <div class="invite-text">Confirma assistència</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(36px,7vw,52px);font-weight:700;line-height:1.1;margin:0 0 8px;text-align:center;">Confirmació</h2>
+    <div style="display:flex;align-items:center;gap:10px;margin:12px auto 32px;width:120px;">
+      <div style="flex:1;height:1px;background:var(--accent);opacity:0.6;"></div>
+      <span style="color:var(--accent);font-size:10px;opacity:0.8;">✦</span>
+      <div style="flex:1;height:1px;background:var(--accent);opacity:0.6;"></div>
+    </div>
     <p style="font-weight:300;font-size:14px;letter-spacing:1px">Data límit: 03/10/2026</p>
-    <form>
-      <input placeholder="Nom" required>
-      <input placeholder="Assistiràs?">
-      <textarea placeholder="Al·lèrgies"></textarea>
-      <button type="button">Enviar</button>
+    <form id="form-confirmacio" style="display:flex;flex-direction:column;gap:10px;width:300px;">
+      <input id="conf-nom" placeholder="Nom" required>
+      <input id="conf-assistira" placeholder="Assistiràs?">
+      <textarea id="conf-allergies" placeholder="Al·lèrgies"></textarea>
+      <button type="button" onclick="enviarConfirmacio()">Enviar</button>
+      <span id="conf-msg" style="font-size:12px;letter-spacing:1px;opacity:0;transition:opacity 0.4s;text-align:center;"></span>
     </form>
     <div class="arrow" onclick="scrollToSection(7)">↓</div>
   </div>
@@ -650,10 +254,18 @@ section.beige-section .arrow{
 <!-- SECCIÓ 8: Cançó -->
 <section style="background-image:url('foto2.jpg'); min-height:auto; height:auto; padding:0;">
   <div class="overlay-auto" style="min-height:100vh;justify-content:center;">
-    <h2>La teva cançó</h2>
-    <form>
-      <input placeholder="Escriu una cançó" required>
-      <button type="button">Enviar</button>
+    <div class="invite-text">Dedica'ns una cançó</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(36px,7vw,52px);font-weight:700;line-height:1.1;margin:0 0 8px;text-align:center;">La teva cançó</h2>
+    <div style="display:flex;align-items:center;gap:10px;margin:12px auto 32px;width:120px;">
+      <div style="flex:1;height:1px;background:var(--accent);opacity:0.6;"></div>
+      <span style="color:var(--accent);font-size:10px;opacity:0.8;">✦</span>
+      <div style="flex:1;height:1px;background:var(--accent);opacity:0.6;"></div>
+    </div>
+    <form id="form-canco" style="display:flex;flex-direction:column;gap:10px;width:300px;">
+      <input id="canco-nom" placeholder="Nom" required>
+      <input id="canco-canco" placeholder="Escriu una cançó" required>
+      <button type="button" onclick="enviarCanco()">Enviar</button>
+      <span id="canco-msg" style="font-size:12px;letter-spacing:1px;opacity:0;transition:opacity 0.4s;text-align:center;"></span>
     </form>
     <p style="font-weight:300;font-size:13px;letter-spacing:1px;opacity:0.8">Properament app per fotos</p>
     <div class="arrow" onclick="scrollToSection(8)">↓</div>
@@ -667,145 +279,91 @@ section.beige-section .arrow{
   </div>
 </section>
 
-<!-- MODAL CALENDARI - fora de totes les seccions per z-index correcte -->
-<div id="cal-modal" style="
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  z-index:9999;
-  align-items:flex-end;
-  justify-content:center;
-" onclick="closeCalendarMenu(event)">
-  <div style="
-    background:white;
-    border-radius:20px 20px 0 0;
-    width:100%;
-    max-width:500px;
-    padding:24px 20px 40px;
-    color:#333;
-  " onclick="event.stopPropagation()">
+<!-- MODAL CALENDARI -->
+<div id="cal-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:flex-end;justify-content:center;" onclick="closeCalendarMenu(event)">
+  <div style="background:white;border-radius:20px 20px 0 0;width:100%;max-width:500px;padding:24px 20px 40px;color:#333;" onclick="event.stopPropagation()">
     <div style="width:40px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 20px;"></div>
     <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14px;text-align:center;margin:0 0 20px;color:#666;">Afegir al calendari</p>
     <div style="display:flex;flex-direction:column;gap:2px;">
-      <button onclick="addToGoogle()" style="
-        border:none;border-bottom:1px solid #f0f0f0;background:white;
-        padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
-        color:#333;cursor:pointer;text-align:left;letter-spacing:0;
-        display:flex;align-items:center;gap:12px;
-      ">📅 Google Calendar</button>
-      <button onclick="addToApple()" style="
-        border:none;border-bottom:1px solid #f0f0f0;background:white;
-        padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
-        color:#333;cursor:pointer;text-align:left;letter-spacing:0;
-        display:flex;align-items:center;gap:12px;
-      ">🍎 Apple Calendar (iOS/Mac)</button>
-      <button onclick="addToOutlook()" style="
-        border:none;border-bottom:1px solid #f0f0f0;background:white;
-        padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
-        color:#333;cursor:pointer;text-align:left;letter-spacing:0;
-        display:flex;align-items:center;gap:12px;
-      ">📧 Outlook / altres</button>
-      <button onclick="closeCalendarMenu({target:document.getElementById('cal-modal')})" style="
-        border:none;background:white;
-        padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;
-        color:#999;cursor:pointer;text-align:center;letter-spacing:1px;
-        font-weight:300;margin-top:4px;width:100%;
-      ">Cancel·lar</button>
+      <button onclick="addToGoogle()" style="border:none;border-bottom:1px solid #f0f0f0;background:white;padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;color:#333;cursor:pointer;text-align:left;letter-spacing:0;display:flex;align-items:center;gap:12px;">📅 Google Calendar</button>
+      <button onclick="addToApple()" style="border:none;border-bottom:1px solid #f0f0f0;background:white;padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;color:#333;cursor:pointer;text-align:left;letter-spacing:0;display:flex;align-items:center;gap:12px;">🍎 Apple Calendar (iOS/Mac)</button>
+      <button onclick="addToOutlook()" style="border:none;border-bottom:1px solid #f0f0f0;background:white;padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;color:#333;cursor:pointer;text-align:left;letter-spacing:0;display:flex;align-items:center;gap:12px;">📧 Outlook / altres</button>
+      <button onclick="closeCalendarMenu({target:document.getElementById('cal-modal')})" style="border:none;background:white;padding:16px;font-family:'Montserrat',sans-serif;font-size:15px;color:#999;cursor:pointer;text-align:center;letter-spacing:1px;font-weight:300;margin-top:4px;width:100%;">Cancel·lar</button>
     </div>
   </div>
 </div>
 
 <script>
-function scrollToSection(i){
-  document.querySelectorAll('section')[i].scrollIntoView({behavior:'smooth'});
-}
+function scrollToSection(i){document.querySelectorAll('section')[i].scrollIntoView({behavior:'smooth'});}
+function toggleMusic(){const m=document.getElementById('music');const v=document.getElementById('vinyl');if(m.paused){m.play();v.classList.add('playing');}else{m.pause();v.classList.remove('playing');}}
+const wedding=new Date('Oct 24, 2026 16:20:00').getTime();
+function updateCountdown(){const now=new Date().getTime();const dist=wedding-now;if(dist<0){document.getElementById('cd-dies').textContent='0';return;}document.getElementById('cd-dies').textContent=Math.floor(dist/(1000*60*60*24));document.getElementById('cd-hores').textContent=Math.floor((dist/(1000*60*60))%24);document.getElementById('cd-minuts').textContent=Math.floor((dist/1000/60)%60);document.getElementById('cd-segons').textContent=Math.floor((dist/1000)%60);}
+updateCountdown();setInterval(updateCountdown,1000);
+function openCalendarMenu(){document.getElementById('cal-modal').style.display='flex';document.body.style.overflow='hidden';}
+function closeCalendarMenu(e){if(e.target===document.getElementById('cal-modal')){document.getElementById('cal-modal').style.display='none';document.body.style.overflow='';}}
+function addToGoogle(){window.open('https://www.google.com/calendar/render?action=TEMPLATE&text=Casament+Judit+i+Josep&dates=20261024T162000/20261024T235900&details=Us+esperem!+%F0%9F%97%BA+Com+arribar%3A+https%3A%2F%2Fmaps.app.goo.gl%2FQhXVD81pBayweuz77&location=Can+Marlet%2C+Riells+del+Montseny');document.getElementById('cal-modal').style.display='none';document.body.style.overflow='';}
+function addToApple(){const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Judit&Josep//Wedding//CA','BEGIN:VEVENT','DTSTART:20261024T162000','DTEND:20261024T235900','SUMMARY:Casament Judit i Josep','DESCRIPTION:Us esperem!\\nCom arribar: https://maps.app.goo.gl/QhXVD81pBayweuz77','LOCATION:Can Marlet\\, Riells del Montseny','URL:https://maps.app.goo.gl/QhXVD81pBayweuz77','END:VEVENT','END:VCALENDAR'].join('\r\n');const blob=new Blob([ics],{type:'text/calendar'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='casament-judit-josep.ics';a.click();URL.revokeObjectURL(url);document.getElementById('cal-modal').style.display='none';document.body.style.overflow='';}
+function addToOutlook(){window.open('https://outlook.live.com/calendar/0/deeplink/compose?subject=Casament+Judit+i+Josep&startdt=2026-10-24T16:20:00&enddt=2026-10-24T23:59:00&body=Us+esperem!+Com+arribar%3A+https%3A%2F%2Fmaps.app.goo.gl%2FQhXVD81pBayweuz77&location=Can+Marlet%2C+Riells+del+Montseny');document.getElementById('cal-modal').style.display='none';document.body.style.overflow='';}
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyKZher76Ox23ORnsdhWDleziNKpxVj5DyCMjMmLpox1EUDCtL26VM3Iewwiw7DMAwJ/exec';
 
-function toggleMusic(){
-  const m = document.getElementById('music');
-  const v = document.getElementById('vinyl');
-  if(m.paused){
-    m.play();
-    v.classList.add('playing');
-  } else {
-    m.pause();
-    v.classList.remove('playing');
-  }
-}
-
-// Compte enrere amb caixes individuals
-const wedding = new Date('Oct 24, 2026 16:20:00').getTime();
-function updateCountdown(){
-  const now = new Date().getTime();
-  const dist = wedding - now;
-  if(dist < 0){ document.getElementById('cd-dies').textContent='0'; return; }
-  document.getElementById('cd-dies').textContent   = Math.floor(dist/(1000*60*60*24));
-  document.getElementById('cd-hores').textContent  = Math.floor((dist/(1000*60*60))%24);
-  document.getElementById('cd-minuts').textContent = Math.floor((dist/1000/60)%60);
-  document.getElementById('cd-segons').textContent = Math.floor((dist/1000)%60);
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-// Calendari
-function openCalendarMenu(){
-  document.getElementById('cal-modal').style.display='flex';
-  document.body.style.overflow='hidden';
-}
-function closeCalendarMenu(e){
-  if(e.target===document.getElementById('cal-modal')){
-    document.getElementById('cal-modal').style.display='none';
-    document.body.style.overflow='';
-  }
-}
-function addToGoogle(){
-  window.open('https://www.google.com/calendar/render?action=TEMPLATE&text=Casament+Judit+i+Josep&dates=20261024T162000/20261024T235900&details=Us+esperem!+%F0%9F%97%BA+Com+arribar%3A+https%3A%2F%2Fmaps.app.goo.gl%2FQhXVD81pBayweuz77&location=Can+Marlet%2C+Riells+del+Montseny');
-  document.getElementById('cal-modal').style.display='none';
-  document.body.style.overflow='';
-}
-function addToApple(){
-  const ics=[
-    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Judit&Josep//Wedding//CA',
-    'BEGIN:VEVENT',
-    'DTSTART:20261024T162000','DTEND:20261024T235900',
-    'SUMMARY:Casament Judit i Josep',
-    'DESCRIPTION:Us esperem!\\nCom arribar: https://maps.app.goo.gl/QhXVD81pBayweuz77',
-    'LOCATION:Can Marlet\\, Riells del Montseny',
-    'URL:https://maps.app.goo.gl/QhXVD81pBayweuz77',
-    'END:VEVENT','END:VCALENDAR'
-  ].join('\r\n');
-  const blob=new Blob([ics],{type:'text/calendar'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url; a.download='casament-judit-josep.ics'; a.click();
-  URL.revokeObjectURL(url);
-  document.getElementById('cal-modal').style.display='none';
-  document.body.style.overflow='';
-}
-function addToOutlook(){
-  window.open('https://outlook.live.com/calendar/0/deeplink/compose?subject=Casament+Judit+i+Josep&startdt=2026-10-24T16:20:00&enddt=2026-10-24T23:59:00&body=Us+esperem!+Com+arribar%3A+https%3A%2F%2Fmaps.app.goo.gl%2FQhXVD81pBayweuz77&location=Can+Marlet%2C+Riells+del+Montseny');
-  document.getElementById('cal-modal').style.display='none';
-  document.body.style.overflow='';
-}
-function addToCalendar(){ openCalendarMenu(); }
-
-// Parallax mòbil
-function isMobile(){return window.innerWidth<=1024}
-function updateParallax(){
-  if(!isMobile()) return;
-  const sections=document.querySelectorAll('section');
-  const scrollY=window.scrollY;
-  sections.forEach(s=>{
-    const rect=s.getBoundingClientRect();
-    const sectionTop=scrollY+rect.top;
-    const offset=(scrollY-sectionTop)*0.35;
-    s.style.backgroundPosition=`center calc(50% + ${offset}px)`;
+function enviarConfirmacio(){
+  const nom = document.getElementById('conf-nom').value.trim();
+  const assistira = document.getElementById('conf-assistira').value.trim();
+  const allergies = document.getElementById('conf-allergies').value.trim();
+  const msg = document.getElementById('conf-msg');
+  const btn = document.querySelector('#form-confirmacio button');
+  if(!nom){msg.textContent='Cal posar el nom!';msg.style.opacity='1';return;}
+  btn.disabled=true;btn.textContent='Enviant...';
+  fetch(SHEETS_URL, {
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({nom, assistira, allergies, canco:''})
+  }).then(()=>{
+    msg.textContent='✓ Enviat correctament!';
+    msg.style.opacity='1';
+    document.getElementById('conf-nom').value='';
+    document.getElementById('conf-assistira').value='';
+    document.getElementById('conf-allergies').value='';
+    btn.textContent='Enviar';btn.disabled=false;
+    setTimeout(()=>msg.style.opacity='0', 3000);
+  }).catch(()=>{
+    msg.textContent='Error en enviar. Torna-ho a provar.';
+    msg.style.opacity='1';
+    btn.textContent='Enviar';btn.disabled=false;
   });
 }
+
+function enviarCanco(){
+  const nom = document.getElementById('canco-nom').value.trim();
+  const canco = document.getElementById('canco-canco').value.trim();
+  const msg = document.getElementById('canco-msg');
+  const btn = document.querySelector('#form-canco button');
+  if(!nom||!canco){msg.textContent='Cal posar nom i cançó!';msg.style.opacity='1';return;}
+  btn.disabled=true;btn.textContent='Enviant...';
+  fetch(SHEETS_URL, {
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({nom, assistira:'', allergies:'', canco})
+  }).then(()=>{
+    msg.textContent='✓ Cançó enviada!';
+    msg.style.opacity='1';
+    document.getElementById('canco-nom').value='';
+    document.getElementById('canco-canco').value='';
+    btn.textContent='Enviar';btn.disabled=false;
+    setTimeout(()=>msg.style.opacity='0', 3000);
+  }).catch(()=>{
+    msg.textContent='Error en enviar. Torna-ho a provar.';
+    msg.style.opacity='1';
+    btn.textContent='Enviar';btn.disabled=false;
+  });
+}
+function isMobile(){return window.innerWidth<=1024}
+function updateParallax(){if(!isMobile())return;const sections=document.querySelectorAll('section');const scrollY=window.scrollY;sections.forEach(s=>{const rect=s.getBoundingClientRect();const sectionTop=scrollY+rect.top;const offset=(scrollY-sectionTop)*0.35;s.style.backgroundPosition=`center calc(50% + ${offset}px)`;});}
 window.addEventListener('scroll',updateParallax,{passive:true});
 window.addEventListener('resize',updateParallax);
 updateParallax();
 </script>
-
 </body>
 </html>
