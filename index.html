@@ -29,7 +29,7 @@ section + section{
 }
 
 .overlay{
-  background:rgba(0,0,0,0.45);
+  background:rgba(0,0,0,0.50);
   position:absolute;
   top:0;left:0;
   width:100%;height:100%;
@@ -41,9 +41,9 @@ section + section{
   z-index:2;
 }
 
-/* Overlay per seccions amb altura automàtica (galeria) */
+/* Overlay per seccions amb altura automàtica (galeria, mapa, timeline, normes) */
 .overlay-auto{
-  background:rgba(0,0,0,0.5);
+  background:rgba(0,0,0,0.50);
   position:relative;
   width:100%;
   display:flex;
@@ -391,8 +391,8 @@ section.beige-section .arrow{
 </section>
 
 <!-- SECCIÓ 3: Compta enrere -->
-<section style="background-image:url('foto2.jpg')">
-  <div class="overlay">
+<section style="background-image:url('foto2.jpg'); min-height:auto; height:auto; padding:0;">
+  <div class="overlay-auto" style="min-height:100vh;justify-content:center;">
     <div class="invite-text">No t'ho perdis</div>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(42px,8vw,64px);font-weight:700;line-height:1.1;margin:0 0 20px;text-align:center;">Guarda la<br>Data!</h2>
 
@@ -632,9 +632,9 @@ section.beige-section .arrow{
   </div>
 </section>
 
-<!-- SECCIÓ 6: Confirmació -->
-<section style="background-image:url('foto2.jpg')">
-  <div class="overlay">
+<!-- SECCIÓ 7: Confirmació -->
+<section style="background-image:url('foto2.jpg'); min-height:auto; height:auto; padding:0;">
+  <div class="overlay-auto" style="min-height:100vh;justify-content:center;">
     <h2>Confirmació</h2>
     <p style="font-weight:300;font-size:14px;letter-spacing:1px">Data límit: 03/10/2026</p>
     <form>
@@ -647,9 +647,9 @@ section.beige-section .arrow{
   </div>
 </section>
 
-<!-- SECCIÓ 7: Cançó -->
-<section style="background-image:url('foto2.jpg')">
-  <div class="overlay">
+<!-- SECCIÓ 8: Cançó -->
+<section style="background-image:url('foto2.jpg'); min-height:auto; height:auto; padding:0;">
+  <div class="overlay-auto" style="min-height:100vh;justify-content:center;">
     <h2>La teva cançó</h2>
     <form>
       <input placeholder="Escriu una cançó" required>
@@ -660,7 +660,7 @@ section.beige-section .arrow{
   </div>
 </section>
 
-<!-- SECCIÓ 8: Final -->
+<!-- SECCIÓ 9: Final -->
 <section style="background-image:url('foto1.jpg')">
   <div class="overlay">
     <h2 style="font-size:60px">❤️</h2>
